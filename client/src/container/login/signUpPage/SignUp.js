@@ -2,9 +2,9 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux';
-import { SignUpAction } from '../../redux/action/loginAction/action';
 import ToastifyMain from '../../toastify/ToastifyMain';
 import Loading from '../../mainContainer/helps/mainLoading/Loading';
+import { SignUpAction } from '../../redux/loginNdSign/action';
 
 
 const SignUp = (props) => {
