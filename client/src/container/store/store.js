@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
     signUpReducers,
     loginReducers,
     logOutReducers
-
 });
 
 const intialState = {};

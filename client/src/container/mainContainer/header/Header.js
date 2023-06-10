@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Button, Container, Form, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logOutAction } from '../../redux/action/loginAction/action';
+// import { logOutAction } from '../../redux/action/loginAction/action';
 import "./Header.css"
 
 const Header = () => {
@@ -49,7 +49,7 @@ const Header = () => {
                                         <div className='ms-3'>
                                             <Link to="/">
                                                 <Button variant="outline-danger"
-                                                    onClick={() => dispatch(logOutAction())}
+                                                // onClick={() => dispatch(logOutAction())}
                                                 >log out</Button>
 
                                             </Link>

@@ -18,9 +18,10 @@ const Login = (props) => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         dispatch(loginNgoActions({
-            email: "guri@yopmail.com",
-            password: "12345678"
+            email: data?.email,
+            password: data?.password
         }))
+        // "guri@yopmail.com"
         // const email = data?.email;
         // const password = data?.password
         // dispatch(loginAction(email, password))
