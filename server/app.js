@@ -16,6 +16,8 @@ const reviewRouter = require("./routes/reviewRoutes");
 const bookingRouter = require("./routes/bookingRoutes");
 const viewRouter = require("./routes/viewRoutes");
 const campaignRouter = require("./routes/campaignRoutes");
+const donationRouter = require("./routes/donationRoutes");
+
 const bodyParser = require('body-parser');
 
 // Start Express App
@@ -93,6 +95,8 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/reviews", reviewRouter);
 app.use("/api/v1/bookings", bookingRouter);
 app.use("/api/v1/campaign", campaignRouter);
+app.use("/api/v1/donation", donationRouter);
+
 
 // Handling Unhendled Routes
 app.all("*", (req, res, next) => {
