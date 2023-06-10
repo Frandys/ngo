@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['user', 'admin'],
+        enum: ['user', 'mgo'],
         default: 'user',
     },
     password: {
@@ -35,34 +35,22 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Please provide a password'],
         minlength: [8, 'Password must be greater then 8 chars']
     },
-    // passwordConfirm: {
-    //     type: String,
-    //     required: [true, 'Please confirm your password'],
-    //     validate: {
-    //         // This only works on CREATE and SAVE!!!
-    //         validator: function (el) {
-    //             return el === this.password;
-    //         },
-    //         message: 'Passwords are not the same!',
-    //     },
-    // },
     emailVerifyToken: String,
     emailVerifyExpires: Date,
     active: {
         type: Boolean,
-        default: false,
-        select: false,
-    } 
+        default: false
+     } 
 });
 
 userSchema.pre('save', async function (next) {
     // Only run this function if password was actually modified
-    if (!this.isModified('password')) return next();
+    // if (!this.isModified('password')) return next();
 
     // Has the password with cost of 12
     this.password = await bcrypt.hash(this.password, 12);
     // Delete passwordConfirm field
-    this.passwordConfirm = undefined;
+    // this.passwordConfirm = undefined;
     next();
 });
  
