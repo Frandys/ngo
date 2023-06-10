@@ -1,0 +1,26 @@
+.cursor_ {
+  cursor: pointer;
+}
+.image_bckgrnd_img {
+  height: 57rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("https://images.tailorstore.com/YToyOntzOjU6IndpZHRoIjtzOjQ6IjIwMDAiO3M6NjoiaGVpZ2h0IjtzOjA6IiI7fQ%3D%3D/images/cms/tailor-store-dress-shirt-major-w21.jpg");
+}
+.bg_image_one {
+  height: 40rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("https://images.tailorstore.com/YToyOntzOjU6IndpZHRoIjtzOjQ6IjEwMDAiO3M6NjoiaGVpZ2h0IjtzOjA6IiI7fQ%3D%3D/images/cms/TailorstoreVers7-23-major-summer.jpg");
+}
+
+.bg_image_one {
+  height: 40rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("https://images.tailorstore.com/YToyOntzOjU6IndpZHRoIjtzOjQ6IjEwMDAiO3M6NjoiaGVpZ2h0IjtzOjA6IiI7fQ%3D%3D/images/catalog/4840-sicilia-olivegreen-two-piece-main.jpg");
+}
+
+.card_height {
+  height: 65rem;
+}
