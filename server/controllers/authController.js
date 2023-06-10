@@ -40,7 +40,7 @@ const createSendToken = (user, statusCode, res) => {
 exports.signup = catchAsync(async (req, res, next) => {
     const newUser = await User.create(req.body);
     const vrfifyToken = newUser.createVerfyToken();
-    await user.save();
+    await User.save();
     // 3. Send it to the user's email
     const vrfifyURL = `${req.protocol}://${req.get(
         'host'
