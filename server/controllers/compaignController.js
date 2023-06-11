@@ -47,16 +47,16 @@ exports.createCompaign = catchAsync(async (req, res, next) => {
 });
 
 exports.updateCompaigns = catchAsync(async (req, res, next) => {
-
-  console.log(req);
-
+ 
   if (req.body.type === "image") {
     req.body.source = req.file.filename;
   }
+
   let data = await Campaign.findByIdAndUpdate(req.params.id, req.body);
 
   res.status(200).json({
     status: "success",
+    data:req.body, 
     message: "Campaign updated successfully",
   });
 });
