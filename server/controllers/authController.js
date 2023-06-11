@@ -40,12 +40,12 @@ const createSendToken = (user, statusCode, res) => {
 exports.signup = catchAsync(async (req, res, next) => {
     const newUser = await User.create(req.body);
     const vrfifyToken = newUser.createVerfyToken();
-    await User.save();
+    await newUser.save();
     // 3. Send it to the user's email
     const vrfifyURL = `${req.protocol}://${req.get(
         'host'
     )}/api/v1/users/verifyUser/${vrfifyToken}`;
-    await new Email(req.user, vrfifyURL).sendWelcome();
+    await new Email(newUser, vrfifyURL).sendWelcome();
     res.status(200).json({
         status: 'success',
         message: 'Please verify your email',
@@ -119,7 +119,7 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError("Please activate your email address!", 401));
   }
   console.log(user);
-  if (!user || (await user.correctPassword( user.password, user.password))) {
+  if (!user || (await user.correctPassword(  password,user.password))) {
     return next(new AppError("Incorrect email or password", 401));
   }
 
