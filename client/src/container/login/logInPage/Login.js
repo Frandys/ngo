@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from '../../redux/action/loginAction/action';
 import Loading from '../../mainContainer/helps/mainLoading/Loading';
 import ToastifyMain from '../../toastify/ToastifyMain';
-import { loginNgoActions } from '../../redux/action/action';
+// import { loginNgoActions } from '../../redux/action/action';
+import { loginNgoActions } from '../../redux/loginNdSign/action';
 
 const Login = (props) => {
     const { loginSignBtn } = props
@@ -14,13 +15,13 @@ const Login = (props) => {
     const state = useSelector((state) => state);
     const loginLoading = state?.loginReducers?.loading
     const loginStatus = state?.loginReducers?.login
-    console.log(state?.loginReducers, 'kkk')
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         dispatch(loginNgoActions({
-            email: "guri@yopmail.com",
-            password: "12345678"
+            email: data?.email,
+            password: data?.password
         }))
+        // "guri@yopmail.com"
         // const email = data?.email;
         // const password = data?.password
         // dispatch(loginAction(email, password))
