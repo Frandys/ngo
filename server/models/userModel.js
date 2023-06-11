@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema({
     active: {
         type: Boolean,
         default: false
-     } 
+    } 
 });
 
 userSchema.pre('save', async function (next) {
