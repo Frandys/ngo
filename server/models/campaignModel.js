@@ -28,6 +28,10 @@ const compainSchema = new mongoose.Schema({
     type: Number,
     required:true,
   },
+  donateAmount: {
+    type: Number,
+    required:false,
+  },
 });
 
  
