@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 // import { logOutAction } from '../../redux/action/loginAction/action';
 import "./Header.css"
+import { logOutAction } from '../../redux/loginNdSign/action';
 
 const Header = () => {
     const dispatch = useDispatch()
@@ -49,7 +50,7 @@ const Header = () => {
                                         <div className='ms-3'>
                                             <Link to="/">
                                                 <Button variant="outline-danger"
-                                                // onClick={() => dispatch(logOutAction())}
+                                                    onClick={() => dispatch(logOutAction())}
                                                 >log out</Button>
 
                                             </Link>

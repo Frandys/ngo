@@ -11,6 +11,7 @@ const SIGN_UP_INITIAL_STATE = {
 }
 
 const loginReducer = (state = LOGIN_INITIAL_STATE, action) => {
+    console.log(action, 'reducr')
     switch (action.type) {
         case actionType.LOGIN_UP_LOADING:
             return {
@@ -27,6 +28,8 @@ const loginReducer = (state = LOGIN_INITIAL_STATE, action) => {
                 loginData: action.payload,
                 loading: false
             }
+        case actionType.LOG_OUT_UP_SUCCESS:
+            return LOGIN_INITIAL_STATE
         default: return state
     }
 }

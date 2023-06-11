@@ -4,17 +4,22 @@ const api = new APICore();
 
 
 export const loginNgoActions = (params) => async (dispatch) => {
+    dispatch({
+        type: actionType.LOGIN_UP_LOADING
+    })
     try {
-        dispatch({
-            type: actionType.LOGIN_UP_LOADING
-        })
-        const data = api.create(`api/v1/users/login`, params);
-        console.log(data, 'api call')
-        dispatch({
-            type: actionType.LOGIN_UP_SUCCESS,
-            payload: data
-        })
+        api.create(`api/v1/users/login`, params).then((success) => {
+            dispatch({
+                type: actionType.LOGIN_UP_SUCCESS,
+                payload: success
+            })
+            const token = success?.data?.token
+            localStorage.setItem("token", token);
 
+        }).catch((error) => {
+            console.log(error, 'error')
+
+        });
     } catch (error) {
         dispatch({
             type: actionType.LOGIN_UP_ERROR,
@@ -64,4 +69,20 @@ export const SignUpAction = (params) => async (dispatch) => {
         })
     }
 }
+
+
+export const logOutAction = () => async (dispatch) => {
+    localStorage.clear();
+    try {
+        dispatch({
+            type: actionType.LOG_OUT_UP_SUCCESS,
+            payload: {}
+        })
+
+    } catch (error) {
+
+    }
+}
+
+
 

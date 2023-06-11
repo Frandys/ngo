@@ -11,18 +11,19 @@ import PortFolio from './container/mainContainer/body/portfolio/portFolioPage/Po
 
 function App() {
   const state = useSelector((state) => state)
-  const login = state?.loginReducers?.login?.user?.accessToken
+  const login = state?.loginReducer?.loginData?.data?.token
   const logOutRes = state?.logOutReducers?.logOut
   const [accessToken, setAccessToken] = useState('')
 
+  console.log(state?.loginReducer?.loginData?.data?.token, 'state ii')
   useEffect(() => {
-    if (login !== undefined) {
-      setAccessToken(localStorage.getItem("accessToken"));
+    if (login !== "") {
+      setAccessToken(localStorage.getItem("token"));
     } else {
-      setAccessToken(localStorage.getItem("accessToken"));
+      setAccessToken(localStorage.getItem("token"));
     }
     if (logOutRes === true) {
-      setAccessToken(localStorage.getItem("accessToken"));
+      setAccessToken(localStorage.getItem("token"));
     }
   }, [login, logOutRes, accessToken])
 
