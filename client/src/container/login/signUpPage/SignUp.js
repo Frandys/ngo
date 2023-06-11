@@ -10,8 +10,14 @@ import { SignUpAction } from '../../redux/loginNdSign/action';
 const SignUp = (props) => {
     const dispatch = useDispatch()
     const store = useSelector((state) => state)
-    const signUpMessage = store?.signUpReducers?.signUp?.code
-    const signUpLoading = store?.signUpReducers?.loading
+    const signUpMessage = store?.signUpReducer?.signUpData
+    const signUpSuccessStatus = store?.signUpReducer?.signUpData?.data?.status
+    const signUpSuccessMessage = store?.signUpReducer?.signUpData?.data?.message
+
+
+    const signUpLoading = store?.signUpReducer?.loading
+
+    console.log(store?.signUpReducer?.signUpData?.data?.status, 'sinpttt')
     const { loginSignBtn } = props
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -27,8 +33,16 @@ const SignUp = (props) => {
     useEffect(() => {
         if (!signUpMessage == '') {
             ToastifyMain(signUpMessage)
+        } else if (signUpSuccessStatus === "success") {
+            ToastifyMain(signUpSuccessMessage)
         }
-    }, [signUpMessage])
+    }, [signUpMessage, signUpSuccessStatus])
+
+    useEffect(() => {
+        if (signUpSuccessStatus === "success") {
+            ToastifyMain(signUpSuccessMessage)
+        }
+    }, [signUpSuccessStatus])
 
 
     return (

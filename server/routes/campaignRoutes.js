@@ -6,7 +6,7 @@ const compaignController = require("../controllers/compaignController");
 router.use(authController.protect);
 router
   .route("/")
-  .get(compaignController.getCompaigns)
+  .get(compaignController.getAllCompaigns)
   .post(    
     compaignController.uploadCompaignFile,
     compaignController.resizeCompaignFile,
@@ -16,7 +16,7 @@ router
   router
   .route("/:id")
   .get(compaignController.getCompaigns)
-  // .patch(compaignController.updateCompaigns)
+  .patch(compaignController.updateCompaigns)
   // .delete(bookingController.deleteCompaigns);
 
 module.exports = router;

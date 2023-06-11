@@ -3,26 +3,36 @@ import Header from '../../../header/Header'
 import { Card, Button } from 'react-bootstrap';
 import "../../../header/Header.css"
 import FirstImage from "../../../../helps/imageStatic/firstImage.jpg"
+import { campaignActions } from '../../../../redux/campaign/action';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 const PortFolio = () => {
-    const [array, setArray] = useState(['hello', 'hii', 'what your name'])
-    const [arrayid, setArrayId] = useState([])
+    const store = useSelector((state) => state);
+    const dispatch = useDispatch()
+    console.log(store, 'ooo')
 
-    const checkBox = (check, id) => {
-        if (check === true) {
-            setArrayId([...arrayid, id])
-        } else if (check === false) {
-            const findArrayId = arrayid?.filter((itss, indexs) => itss !== id)
-            setArrayId(findArrayId);
-        }
-    }
+    useEffect(() => {
+        dispatch(campaignActions())
+    }, [])
+    // const [array, setArray] = useState(['hello', 'hii', 'what your name'])
+    // const [arrayid, setArrayId] = useState([])
 
-    const deleteBtn = (id) => {
-        const deleteChekd = array?.filter((iitems, iiitd) => iiitd !== id)
-        setArray(deleteChekd)
-        setArrayId([])
-    }
+    // const checkBox = (check, id) => {
+    //     if (check === true) {
+    //         setArrayId([...arrayid, id])
+    //     } else if (check === false) {
+    //         const findArrayId = arrayid?.filter((itss, indexs) => itss !== id)
+    //         setArrayId(findArrayId);
+    //     }
+    // }
+
+    // const deleteBtn = (id) => {
+    //     const deleteChekd = array?.filter((iitems, iiitd) => iiitd !== id)
+    //     setArray(deleteChekd)
+    //     setArrayId([])
+    // }
+
 
     return (
         <>

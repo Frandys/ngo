@@ -12,7 +12,7 @@ const Login = (props) => {
     const { loginSignBtn } = props
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
-    const loginLoading = state?.loginReducers?.loading
+    const loginLoading = state?.loginReducer?.loading
     const loginStatus = state?.loginReducers?.login
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = (data) => {

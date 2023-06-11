@@ -1,5 +1,6 @@
 import * as actionType from "./constant"
 import { APICore } from "../../helps/apiCore";
+import { setAuthorization } from "../../helps/apiCore";
 const api = new APICore();
 
 
@@ -14,6 +15,7 @@ export const loginNgoActions = (params) => async (dispatch) => {
                 payload: success
             })
             const token = success?.data?.token
+            setAuthorization(token)
             localStorage.setItem("token", token);
 
         }).catch((error) => {
@@ -33,40 +35,39 @@ export const loginNgoActions = (params) => async (dispatch) => {
 
 
 export const SignUpAction = (params) => async (dispatch) => {
-
+    dispatch({
+        type: actionType.SIGN_UP_LOADING,
+        payload: {}
+    })
     try {
-        dispatch({
-            type: actionType.SIGN_UP_LOADING,
-            payload: {}
-        })
-        const data = api.create(`api/v1/users/signup`, params);
-        console.log(data, 'singppu ')
-        // createUserWithEmailAndPassword(auth, data.email, data.password).then((res) => {
-        //     dispatch({
-        //         type: actionType.SIGN_UP_SUCCESS,
-        //         payload: res
-        //     })
 
-        // }).catch(erro => {
-        //     dispatch({
-        //         type: actionType.SIGN_UP_ERROR,
-        //         payload: erro
-        //     })
-        //     dispatch({
-        //         type: actionType.SIGN_UP_RESET,
-        //         payload: {}
-        //     })
-        // })
+        api.create(`api/v1/users/signup`, params).then((success) => {
+            dispatch({
+                type: actionType.SIGN_UP_SUCCESS,
+                payload: success
+            })
+            dispatch({
+                type: actionType.SIGN_UP_RESET,
+                payload: {}
+            })
+        }).catch((error) => {
+            dispatch({
+                type: actionType.SIGN_UP_ERROR,
+                payload: error
+            })
+            dispatch({
+                type: actionType.SIGN_UP_RESET,
+                payload: {}
+            })
+
+        });
 
     } catch (error) {
         dispatch({
             type: actionType.SIGN_UP_ERROR,
             payload: error
         })
-        dispatch({
-            type: actionType.SIGN_UP_RESET,
-            payload: {}
-        })
+
     }
 }
 

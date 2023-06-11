@@ -2,7 +2,8 @@ import * as actionType from "./constant"
 
 const LOGIN_INITIAL_STATE = {
     loginData: [],
-    loading: false
+    loading: false,
+    logOut: false
 }
 
 const SIGN_UP_INITIAL_STATE = {
@@ -29,7 +30,10 @@ const loginReducer = (state = LOGIN_INITIAL_STATE, action) => {
                 loading: false
             }
         case actionType.LOG_OUT_UP_SUCCESS:
-            return LOGIN_INITIAL_STATE
+            return {
+                logOut: true,
+                loading: false
+            }
         default: return state
     }
 }
