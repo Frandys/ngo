@@ -18,11 +18,22 @@ export const loginNgoActions = (params) => async (dispatch) => {
             setAuthorization(token)
             localStorage.setItem("token", token);
 
-        }).catch((error) => {
-            console.log(error, 'error')
-
-        });
+        }).catch(
+            function (error) {
+                console.log('Show error notification!', Promise.reject(error), error)
+                return Promise.reject(error)
+            }
+            //     (error) => {
+            //     console.log(error, Promise.reject(error), '1')
+            //     dispatch({
+            //         type: actionType.LOGIN_UP_ERROR,
+            //         payload: error
+            //     })
+            // }
+        );
     } catch (error) {
+        console.log(error, '2')
+
         dispatch({
             type: actionType.LOGIN_UP_ERROR,
             payload: error

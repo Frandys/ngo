@@ -9,7 +9,7 @@ export const campaignActions = () => async (dispatch) => {
         payload: {}
     })
     try {
-        api.get(`/api/v1/campaign`).then((success) => {
+        api.get(`api/v1/campaign`).then((success) => {
             dispatch({
                 type: actionType.CAMPAIGN_SUCCESS,
                 payload: success

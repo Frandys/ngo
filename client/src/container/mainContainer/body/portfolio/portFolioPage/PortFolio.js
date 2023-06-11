@@ -5,12 +5,22 @@ import "../../../header/Header.css"
 import FirstImage from "../../../../helps/imageStatic/firstImage.jpg"
 import { campaignActions } from '../../../../redux/campaign/action';
 import { useSelector, useDispatch } from 'react-redux';
+import { TableLorder } from '../../../../helps/mainLorder/Lorder';
+import CampaignForm from './model/CampaignForm';
 
 
 const PortFolio = () => {
     const store = useSelector((state) => state);
     const dispatch = useDispatch()
-    console.log(store, 'ooo')
+    const campaignGetData = store?.getCampaignReducer?.getCampaignData?.data?.data?.data
+    const campaignGetloading = store?.getCampaignReducer?.loading
+    const [modalShow, setModalShow] = useState(false);
+    const [campaignData, setCampaignData] = useState('')
+
+    const campaignOpenModel = (data) => {
+        setModalShow(true)
+        setCampaignData(data)
+    }
 
     useEffect(() => {
         dispatch(campaignActions())
@@ -101,99 +111,36 @@ const PortFolio = () => {
             <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry"
                 data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100">
 
-                <div>
-                    <ul class="portfolio-flters">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-app">App</li>
-                        <li data-filter=".filter-product">Product</li>
-                        <li data-filter=".filter-branding">Branding</li>
-                        <li data-filter=".filter-books">Books</li>
-                    </ul>
-                    {/* <!-- End Portfolio Filters --> */}
-                </div>
-
-                <div className="container">
+                {!campaignGetloading ? <div className="container">
                     <div class="row gy-4 portfolio-container">
-
-                        <div class="col-xl-4 col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <a href="assets/img/portfolio/app-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                                    src={FirstImage} class="img-fluid" alt="" /></a>
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html" title="More Details">App 1</a></h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
+                        {campaignGetData?.map((item) => {
+                            console.log(item.source, 'map')
+                            return (<>
+                                <div class="col-xl-4 col-md-6 portfolio-item filter-app">
+                                    <div class="portfolio-wrap">
+                                        <a href="" data-gallery="portfolio-gallery-app" class="glightbox"><img
+                                            src={`http://localhost:8000/compaign/${item?.source}`} class="img-fluid" alt="" /></a>
+                                        <div class="portfolio-info">
+                                            <h4><a href="" title="More Details">{item.name}</a></h4>
+                                            <h4><a href="" title="More Details">{item.goal}</a></h4>
+                                            <p>{item.description}</p>
+                                            <button className='btn btn-primary' onClick={() => campaignOpenModel(item)}>Donate</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        {/* <!-- End Portfolio Item --> */}
+                            </>)
+                        })}
 
-                        <div class="col-xl-4 col-md-6 portfolio-item filter-product">
-                            <div class="portfolio-wrap">
-                                <a href="assets/img/portfolio/product-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                                    src={FirstImage} class="img-fluid" alt="" /></a>
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html" title="More Details">Product 1</a></h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                </div>
-                            </div>
-                        </div>
-                        {/* <!-- End Portfolio Item --> */}
-
-                        <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
-                            <div class="portfolio-wrap">
-                                <a href="assets/img/portfolio/branding-1.jpg" data-gallery="portfolio-gallery-app"
-                                    class="glightbox"><img
-                                        src={FirstImage} class="img-fluid" alt="" /></a>
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html" title="More Details">Branding 1</a></h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                </div>
-                            </div>
-                        </div>
-                        {/* <!-- End Portfolio Item --> */}
-
-                        <div class="col-xl-4 col-md-6 portfolio-item filter-books">
-                            <div class="portfolio-wrap">
-                                <a href="assets/img/portfolio/books-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                                    src={FirstImage} class="img-fluid" alt="" /></a>
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html" title="More Details">Books 1</a></h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                </div>
-                            </div>
-                        </div>
-                        {/* <!-- End Portfolio Item --> */}
-
-                        <div class="col-xl-4 col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <a href="assets/img/portfolio/app-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                                    src={FirstImage} class="img-fluid" alt="" /></a>
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html" title="More Details">App 2</a></h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                </div>
-                            </div>
-                        </div>
-                        {/* <!-- End Portfolio Item --> */}
-
-                        <div class="col-xl-4 col-md-6 portfolio-item filter-product">
-                            <div class="portfolio-wrap">
-                                <a href="assets/img/portfolio/product-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img
-                                    src={FirstImage} class="img-fluid" alt="" /></a>
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html" title="More Details">Product 2</a></h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                </div>
-                            </div>
-                        </div>
-                        {/* <!-- End Portfolio Item --> */}
-
-                        {/* <!-- End Portfolio Item --> */}
 
                     </div>
-                </div>
-                {/* <!-- End Portfolio Container --> */}
+                </div> : <><TableLorder /></>}
 
+                <>
+                    <CampaignForm
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                        campaignData={campaignData} />
+                </>
             </div>
 
             {/* <h1>

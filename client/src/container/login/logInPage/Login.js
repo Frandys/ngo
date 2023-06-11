@@ -15,6 +15,7 @@ const Login = (props) => {
     const loginLoading = state?.loginReducer?.loading
     const loginStatus = state?.loginReducers?.login
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    console.log(state, 'login stat mms')
     const onSubmit = (data) => {
         dispatch(loginNgoActions({
             email: data?.email,

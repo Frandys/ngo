@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import About from './container/mainContainer/body/about/About';
 import LoginProtectRouters from './container/navBar/LoginProtectRouters';
 import PortFolio from './container/mainContainer/body/portfolio/portFolioPage/PortFolio';
+import { setAuthorization } from './container/helps/apiCore';
 
 function App() {
   const state = useSelector((state) => state)
@@ -17,11 +18,14 @@ function App() {
   useEffect(() => {
     if (login !== "") {
       setAccessToken(localStorage.getItem("token"));
+      setAuthorization(localStorage.getItem("token"))
+
     } else {
       setAccessToken(localStorage.getItem("token"));
     }
     if (logOutRes === true) {
       setAccessToken(localStorage.getItem("token"));
+
     }
   }, [login, logOutRes, accessToken])
 

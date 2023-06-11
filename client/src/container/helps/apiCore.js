@@ -48,6 +48,10 @@ const AUTH_SESSION_KEY = 'hyper_user';
  * @param {*} token
  */
 const setAuthorization = (token) => {
+    // console.log(token, 'header')
+    // const token = localStorage.getItem("token");
+    // console.log(token, 'logettttt')
+
     if (token) axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     else delete axios.defaults.headers.common['Authorization'];
 };
