@@ -22,7 +22,7 @@ const Header = () => {
                                 </div>
                                 <div className="col-7 d-flex align-self-center justify-content-center">
                                     <div className='d-flex'>
-                                        <div>
+                                        {/* <div>
                                             <Link to="/" className={location?.pathname === "/home" ? "link_style_active link_style" : 'link_style'}>Home</Link>
                                         </div>
                                         <div className='ms-3'>
@@ -30,7 +30,7 @@ const Header = () => {
                                         </div>
                                         <div className='ms-3'>
                                             <Link to="/portfolio" className={location?.pathname === "/portfolio" ? "link_style_active link_style" : 'link_style'}>Portfolio</Link>
-                                        </div>
+                                        </div> */}
 
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@ const Header = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="row ">
+                    {/* <div className="row ">
                         <div className="col-12 ">
                             <div className="row py-4 border">
                                 <div className="col-4 ">
@@ -100,7 +100,7 @@ const Header = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
 
