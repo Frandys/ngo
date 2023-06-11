@@ -17,7 +17,7 @@ const compainSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ["image", "vedio", "text"],
+    enum: ["image", "text"],
     required:true,
   },
   source: {

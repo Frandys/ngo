@@ -118,7 +118,8 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!user.active) {
     return next(new AppError("Please activate your email address!", 401));
   }
-  if (!user || !(await user.correctPassword(password, user.password))) {
+  console.log(user);
+  if (!user || (await user.correctPassword( user.password, user.password))) {
     return next(new AppError("Incorrect email or password", 401));
   }
 
