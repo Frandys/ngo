@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 // import { signInWithEmailAndPassword } from 'firebase/auth';
 // import { auth } from '../../firebase/firebase';
 import { useDispatch, useSelector } from 'react-redux';
-import Loading from '../../mainContainer/helps/mainLoading/Loading';
+import Loading from '../../mainContainer/helpers/mainLoading/Loading';
 import ToastifyMain from '../../toastify/ToastifyMain';
 // import { loginNgoActions } from '../../redux/action/action';
 import { loginNgoActions } from '../../redux/auth/action';

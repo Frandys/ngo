@@ -4,7 +4,9 @@ import axios from 'axios';
 // import config from '../../config';
 
 // content type
+// axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
+
 axios.defaults.baseURL = 'http://localhost:8000';
 
 // intercepting to capture errors

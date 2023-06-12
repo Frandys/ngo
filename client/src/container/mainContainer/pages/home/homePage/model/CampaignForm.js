@@ -9,9 +9,10 @@ import { getHomeCampaignActions } from "../../../../../redux/home/action";
 // import { signInWithEmailAndPassword } from 'firebase/auth';
 // import { auth } from '../../firebase/firebase';
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../../../../../mainContainer/helps/mainLoading/Loading";
+// import Loading from "../../../../helpers/mainLoading/Loading";
 import ToastifyMain from "../../../../../toastify/ToastifyMain";
 import { donationActions } from "../../../../../redux/donaton/action";
+import { ButtonLorder } from "../../../../../helpers/mainLorder/Lorder";
 
 const CampaignForm = (props) => {
   const store = useSelector((state) => state);
@@ -26,7 +27,6 @@ const CampaignForm = (props) => {
     store?.getDonationReducer?.getDonationData?.data?.message;
 
   const { source, description, goal, name, _id } = campaignData;
-  console.log(store?.getDonationReducer?.getDonationData,donationSuccessStatus,'storeeeee')
   const {
     register,
     handleSubmit,
@@ -163,7 +163,7 @@ const CampaignForm = (props) => {
                     </div>
                   </div>
                   <div class="card-button">
-                    <button>{!loading ? <>Donate</> : <Loading />}</button>
+                    <button>{!loading ? <>Donate</> : <ButtonLorder />}</button>
                   </div>
                 </div>
               </form>

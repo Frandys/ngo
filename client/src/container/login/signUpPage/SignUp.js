@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import ToastifyMain from "../../toastify/ToastifyMain";
-import Loading from "../../mainContainer/helps/mainLoading/Loading";
+import Loading from "../../mainContainer/helpers/mainLoading/Loading";
 import { SignUpAction } from "../../redux/auth/action";
 
 const SignUp = (props) => {
@@ -15,7 +15,6 @@ const SignUp = (props) => {
 
   const signUpLoading = store?.signUpReducer?.loading;
 
-  console.log(store?.signUpReducer?.signUpData?.data?.status, "sinpttt");
   const { loginSignBtn } = props;
   const {
     register,
@@ -176,13 +175,13 @@ const SignUp = (props) => {
                           Role
                         </label>
                         <select
-                         class="form-control"
-                       {...register("role", { required: true })}
+                          class="form-control"
+                          {...register("role", { required: true })}
                         >
-                           <option value="ngo">NGO</option>
+                          <option value="ngo">NGO</option>
                           <option value="user">User</option>
                         </select>
-                       
+
                         {errors.role && (
                           <span className="text-danger ">
                             Please enter Role

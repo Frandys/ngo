@@ -3,29 +3,27 @@ import { APICore } from "../../helpers/apiCore";
 const api = new APICore();
 
 
-export const donationActions = (params) => async (dispatch) => {
+export const campaignActions = () => async (dispatch) => {
     dispatch({
-        type: actionType.DONATION_LOADING,
+        type: actionType.CAMPAIGN_LOADING,
         payload: {}
     })
     try {
-        api.create(`api/v1/donation/addDonation`,params).then((success) => {
+        api.get(`api/v1/campaign`).then((success) => {
             dispatch({
-                type: actionType.DONATION_SUCCESS,
+                type: actionType.CAMPAIGN_SUCCESS,
                 payload: success
             })
         }).catch((error) => {
             dispatch({
-                type: actionType.DONATION_ERROR,
+                type: actionType.CAMPAIGN_ERROR,
                 payload: error
             })
-            
         });
     } catch (error) {
         dispatch({
-            type: actionType.DONATION_ERROR,
+            type: actionType.CAMPAIGN_ERROR,
             payload: error
         })
-        
     }
 }

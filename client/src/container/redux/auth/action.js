@@ -1,6 +1,6 @@
 import * as actionType from "./constant"
-import { APICore } from "../../helps/apiCore";
-import { setAuthorization } from "../../helps/apiCore";
+import { APICore } from "../../helpers/apiCore";
+import { setAuthorization } from "../../helpers/apiCore";
 const api = new APICore();
 
 

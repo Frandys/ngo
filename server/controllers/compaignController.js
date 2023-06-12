@@ -24,6 +24,7 @@ exports.uploadCompaignFile = upload.single("source");
 
 exports.resizeCompaignFile = catchAsync(async (req, res, next) => {
   console.log(req.user);
+  console.log(req.file);
   if (!req.file) return next();
   req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
   await sharp(req.file.buffer)
@@ -48,7 +49,7 @@ exports.createCompaign = catchAsync(async (req, res, next) => {
 });
 
 exports.updateCompaigns = catchAsync(async (req, res, next) => {
- 
+
   if (req.body.type === "image") {
     req.body.source = req.file.filename;
   }
@@ -57,7 +58,7 @@ exports.updateCompaigns = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: "success",
-    data:req.body, 
+    data: req.body,
     message: "Campaign updated successfully",
   });
 });
