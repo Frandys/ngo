@@ -22,13 +22,16 @@ const PortFolio = () => {
     const [modalShow, setModalShow] = useState(false);
     const [campaignData, setCampaignData] = useState('')
 
+    const modelClose=()=>{
+        setModalShow(false)
+    }
     const campaignOpenModel = (data) => {
         setModalShow(true)
         setCampaignData(data)
     }
 
     useEffect(() => {
-        dispatch(campaignActions());
+        // dispatch(campaignActions());
         dispatch(getHomeCampaignActions())
     }, [])
 
@@ -109,7 +112,9 @@ const PortFolio = () => {
                                             src={`http://localhost:8000/compaign/${item?.source}`} class="img-fluid" alt="" /></a>
                                         <div class="portfolio-info">
                                             <h4><a href="" title="More Details">{item.name}</a></h4>
-                                            <h4><a href="" title="More Details">{item.goal}</a></h4>
+                                            <h4><a href="" title="More Details">Goal- {item.goal}</a></h4>
+                                            <h4><a href="" title="More Details">Reached- {item.donateAmount}</a></h4>
+
                                             <p>{item.description}</p>
                                             <button className='btn btn-primary' onClick={() => campaignOpenModel(item)}>Donate</button>
                                         </div>
@@ -126,7 +131,9 @@ const PortFolio = () => {
                     <CampaignForm
                         show={modalShow}
                         onHide={() => setModalShow(false)}
-                        campaignData={campaignData} />
+                        campaignData={campaignData}
+                        modelClose={()=>modelClose()}
+                         />
                 </>
             </div>
 

@@ -37,10 +37,8 @@ const SignUp = (props) => {
   useEffect(() => {
     if (!signUpMessage == "") {
       ToastifyMain(signUpMessage);
-    } else if (signUpSuccessStatus === "success") {
-      ToastifyMain(signUpSuccessMessage);
-    }
-  }, [signUpMessage, signUpSuccessStatus]);
+    } 
+  }, [signUpMessage]);
 
   useEffect(() => {
     if (signUpSuccessStatus === "success") {
