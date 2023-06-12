@@ -2,7 +2,7 @@ import React from 'react'
 import { Navigate } from "react-router-dom";
 
 
-const LoginProtectRouters = ({ isLoggedIn, children }) => {
+const PublicRouters = ({ isLoggedIn, children }) => {
     if (!isLoggedIn) {
         return children
     } else {
@@ -10,4 +10,4 @@ const LoginProtectRouters = ({ isLoggedIn, children }) => {
     }
 }
 
-export default LoginProtectRouters
+export default PublicRouters

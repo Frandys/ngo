@@ -11,9 +11,36 @@ const SIGN_UP_INITIAL_STATE = {
     loading: false
 }
 
-const loginReducer = (state = LOGIN_INITIAL_STATE, action) => {
-    console.log(action, 'reducr')
+const VERIFY_EMAIL_INITIAL_STATE = {
+     verifyEmailData: [],
+    loading: false
+}
+
+
+const verifyEmailReducer = (state = VERIFY_EMAIL_INITIAL_STATE, action) => {
     switch (action.type) {
+        case actionType.VERIFY_EMAIL_LOADING:
+            return {
+                verifyEmailData: state.verifyEmailData,
+                loading: true
+            }
+        case actionType.VERIFY_EMAIL_SUCCESS:
+            return {
+                verifyEmailData: action.payload,
+                loading: false
+            }
+        case actionType.VERIFY_EMAIL_ERROR:
+            return {
+                verifyEmailData: action.payload,
+                loading: false
+            }
+        default: return state
+
+    }
+}
+
+const loginReducer = (state = LOGIN_INITIAL_STATE, action) => {
+     switch (action.type) {
         case actionType.LOGIN_UP_LOADING:
             return {
                 loginData: state.loginData,
@@ -24,6 +51,11 @@ const loginReducer = (state = LOGIN_INITIAL_STATE, action) => {
                 loginData: action.payload,
                 loading: false
             }
+            case actionType.LOGIN_UP_ERROR:
+                return {
+                    loginUpData: action.payload,
+                    loading: false
+                }
         case actionType.LOG_OUT_UP_ERROR:
             return {
                 loginData: action.payload,
@@ -33,7 +65,7 @@ const loginReducer = (state = LOGIN_INITIAL_STATE, action) => {
             return {
                 logOut: true,
                 loading: false
-            }
+            } 
         default: return state
     }
 }
@@ -60,4 +92,4 @@ const signUpReducer = (state = SIGN_UP_INITIAL_STATE, action) => {
     }
 }
 
-export { loginReducer, signUpReducer }
+export { loginReducer, signUpReducer ,verifyEmailReducer}

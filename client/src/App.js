@@ -1,22 +1,20 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import Home from './container/mainContainer/body/home/Home';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Protected from './container/navBar/Protected';
+import ProtectedRoutes from './container/navBar/Protected';
 import IndexLogin from './container/login';
 import { useSelector } from 'react-redux';
-import About from './container/mainContainer/body/about/About';
-import LoginProtectRouters from './container/navBar/LoginProtectRouters';
-import PortFolio from './container/mainContainer/body/portfolio/portFolioPage/PortFolio';
-import { setAuthorization } from './container/helps/apiCore';
-import CampaignList from './container/mainContainer/body/campaignList/CampaignList';
+import PublicRouters from './container/navBar/Public';
+import { setAuthorization } from './container/helpers/apiCore';
+import CampaignList from './container/mainContainer/pages/campaignList/CampaignList';
+import HomePage from './container/mainContainer/pages/home/homePage/homePage';
+import VerifyEmail from './container/mainContainer/pages/verifyEmail/Verify';
 
 function App() {
   const state = useSelector((state) => state)
   const login = state?.loginReducer?.loginData?.data?.token
   const logOutRes = state?.loginReducer?.logOut
   const [accessToken, setAccessToken] = useState('')
-  console.log(accessToken, 'kk99')
   useEffect(() => {
     if (login !== "") {
       setAccessToken(localStorage.getItem("token"));
@@ -35,24 +33,29 @@ function App() {
     <>
       <Router >
         <Routes>
-          <Route path="/" element={accessToken !== null ? <>{<LoginProtectRouters isLoggedIn={accessToken} >
-            <IndexLogin />
-          </LoginProtectRouters>}</> : <><PortFolio /></>}
-          ></Route>
-          <Route path="/login" element={<LoginProtectRouters isLoggedIn={accessToken} >
-            <IndexLogin />
-          </LoginProtectRouters>
+        <Route path="/verify-email/:tokens" element={<PublicRouters>
+            <VerifyEmail />
+          </PublicRouters>
           }>
           </Route>
-          <Route path="/about" element={<Protected isLoggedIn={accessToken}>
+          <Route path="/" element={accessToken !== null ? <>{<PublicRouters   >
+            <IndexLogin />
+          </PublicRouters>}</> : <><HomePage /></>}
+          ></Route>
+          <Route path="/login" element={<PublicRouters isLoggedIn={accessToken} >
+            <IndexLogin />
+          </PublicRouters>
+          }>
+          </Route>
+          {/* <Route path="/about" element={<ProtectedRoutes isLoggedIn={accessToken}>
             <About />
-          </Protected>} />
-          <Route path="/portfolio" element={<Protected isLoggedIn={accessToken}>
-            <PortFolio />
-          </Protected>} />
-          <Route path="/campaign" element={<Protected isLoggedIn={accessToken}>
+          </ProtectedRoutes>} /> */}
+          <Route path="/portfolio" element={<ProtectedRoutes isLoggedIn={accessToken}>
+            <ProtectedRoutes />
+          </ProtectedRoutes>} />
+          <Route path="/campaign" element={<ProtectedRoutes isLoggedIn={accessToken}>
             <CampaignList />
-          </Protected>} />
+          </ProtectedRoutes>} />
         </Routes>
       </Router>
     </>

@@ -1,5 +1,5 @@
 import * as actionType from "./constant"
-import { APICore } from "../../helps/apiCore";
+import { APICore } from "../../helpers/apiCore";
 const api = new APICore();
 
 

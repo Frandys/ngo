@@ -5,7 +5,8 @@ import { addCampaignActions, campaignActions } from '../../../../redux/campaign/
 import { useDispatch, useSelector } from 'react-redux';
 import ToastifyMain from '../../../../toastify/ToastifyMain';
 import * as actionType from "../../../../redux/campaign/constant"
-import { ButtonLorder } from '../../../../helps/mainLorder/Lorder';
+import { ButtonLorder } from '../../../../helpers/mainLorder/Lorder';
+// import { ButtonLorder } from '../../../../helps/mainLorder/Lorder';
 
 
 const CampaignForm = (props) => {
@@ -23,7 +24,7 @@ const CampaignForm = (props) => {
         formState: { errors },
     } = useForm();
 
-    console.log(store?.addCampaignReducer?.getCampaignData?.data?.status, '******')
+    console.log(store, addCampaignStatus,addCampaignMessage,'******')
     const [typesInput, setTypesInput] = useState(false)
     const typesInputBtn = (types) => {
         if (types === "image") {

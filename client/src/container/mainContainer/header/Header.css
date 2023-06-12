@@ -12,6 +12,10 @@
 .link_style_active {
   color: black !important;
 }
+.image_size{
+  height: 16rem;
+    width: 19rem;
+}
 
 .header_position {
   position: sticky;

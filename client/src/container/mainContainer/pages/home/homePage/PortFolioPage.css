@@ -24,3 +24,7 @@
 .card_height {
   height: 65rem;
 }
+.img-fluid{
+  max-width: 66% !important;
+    height: auto;
+}

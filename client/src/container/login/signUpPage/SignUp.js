@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import ToastifyMain from "../../toastify/ToastifyMain";
-import Loading from "../../mainContainer/helps/mainLoading/Loading";
+import Loading from "../../mainContainer/helpers/mainLoading/Loading";
 import { SignUpAction } from "../../redux/auth/action";
 
 const SignUp = (props) => {
@@ -36,10 +36,8 @@ const SignUp = (props) => {
   useEffect(() => {
     if (!signUpMessage == "") {
       ToastifyMain(signUpMessage);
-    } else if (signUpSuccessStatus === "success") {
-      ToastifyMain(signUpSuccessMessage);
-    }
-  }, [signUpMessage, signUpSuccessStatus]);
+    } 
+  }, [signUpMessage]);
 
   useEffect(() => {
     if (signUpSuccessStatus === "success") {

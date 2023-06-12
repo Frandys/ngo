@@ -7,8 +7,7 @@ router.use(authController.protect);
 
 router
   .route("/")
-  .get(compaignController.getAllCompaigns)
-  .get(compaignController.getUserCompaigns)
+   .get(compaignController.getUserCompaigns)
 
   .post(    
     compaignController.uploadCompaignFile,
