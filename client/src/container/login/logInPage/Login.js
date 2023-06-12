@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../../mainContainer/helps/mainLoading/Loading';
 import ToastifyMain from '../../toastify/ToastifyMain';
 // import { loginNgoActions } from '../../redux/action/action';
-import { loginNgoActions } from '../../redux/loginNdSign/action';
+import { loginNgoActions } from '../../redux/auth/action';
 
 const Login = (props) => {
     const { loginSignBtn } = props

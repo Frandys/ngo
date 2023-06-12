@@ -23,6 +23,7 @@ const upload = multer({
 exports.uploadCompaignFile = upload.single("source");
 
 exports.resizeCompaignFile = catchAsync(async (req, res, next) => {
+  console.log(req.user);
   if (!req.file) return next();
   req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
   await sharp(req.file.buffer)
@@ -51,7 +52,7 @@ exports.updateCompaigns = catchAsync(async (req, res, next) => {
   if (req.body.type === "image") {
     req.body.source = req.file.filename;
   }
-
+  console.log(req.body);
   let data = await Campaign.findByIdAndUpdate(req.params.id, req.body);
 
   res.status(200).json({
@@ -62,4 +63,5 @@ exports.updateCompaigns = catchAsync(async (req, res, next) => {
 });
 
 exports.getCompaigns = factory.getOne(Campaign);
+exports.getUserCompaigns = factory.getAllByUser(Campaign);
 exports.getAllCompaigns = factory.getAll(Campaign);

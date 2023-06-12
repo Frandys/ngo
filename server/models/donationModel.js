@@ -2,14 +2,18 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 
 const donationSchema = new mongoose.Schema({
-    userId: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User",
-        required: [true, "compain must belong to a User!"],
-    },
+    
     compainId: {
         type: mongoose.Schema.ObjectId,
         ref: "compain"
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    phone: {
+        type: String,
+        required: false,
     },
     accAmount: {
         type: Number,
