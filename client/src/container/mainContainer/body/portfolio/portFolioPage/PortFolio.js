@@ -7,6 +7,7 @@ import { campaignActions } from '../../../../redux/campaign/action';
 import { useSelector, useDispatch } from 'react-redux';
 import { TableLorder } from '../../../../helps/mainLorder/Lorder';
 import CampaignForm from './model/CampaignForm';
+import { getHomeCampaignActions } from '../../../../redux/home/action';
 
 
 const PortFolio = () => {
@@ -23,7 +24,8 @@ const PortFolio = () => {
     }
 
     useEffect(() => {
-        dispatch(campaignActions())
+        dispatch(campaignActions());
+        dispatch(getHomeCampaignActions())
     }, [])
     // const [array, setArray] = useState(['hello', 'hii', 'what your name'])
     // const [arrayid, setArrayId] = useState([])
