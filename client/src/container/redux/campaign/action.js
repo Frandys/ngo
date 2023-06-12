@@ -35,8 +35,7 @@ export const addCampaignActions = (data) => async (dispatch) => {
     })
     try {
 
-        console.log(api);
-        api.create(`api/v1/campaign`, data).then((success) => {
+        api.createWithImage(`api/v1/campaign`, data).then((success) => {
             dispatch({
                 type: actionType.ADD_CAMPAIGN_SUCCESS,
                 payload: success

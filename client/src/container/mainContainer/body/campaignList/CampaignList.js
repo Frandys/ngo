@@ -42,15 +42,18 @@ const CampaignList = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {campaignGetData?.map((item) => {
+                                {campaignGetData?.map((item, index) => {
                                     console.log(item, 'map')
                                     return (<>
                                         <tr>
-                                            <th scope="row">1</th>
+                                            <th scope="row">{index + 1}</th>
                                             <td>{item.name}</td>
                                             <td>{item.description}</td>
-                                            <td>
-                                                <img src={`http://localhost:8000/compaign/${item.source}`} className="image_css" alt="" />
+                                            <td className='py-3'>
+                                                {item.type === "image" ?
+                                                    <img src={`http://localhost:8000/compaign/${item.source}`} className="image_css" alt="" />
+                                                    : <>{item.source}</>
+                                                }
                                             </td>
                                         </tr>
                                     </>)
