@@ -10,10 +10,14 @@ import CampaignForm from './model/CampaignForm';
 import { getHomeCampaignActions } from '../../../../redux/home/action';
 
 
+
 const PortFolio = () => {
     const store = useSelector((state) => state);
     const dispatch = useDispatch()
     const campaignGetData = store?.getCampaignReducer?.getCampaignData?.data?.data?.data
+    const homeCampaignGetData = store?.getHomeCampaignReducer?.getHomeCampaignData?.data?.data?.data
+    // const login = state?.loginReducer?.loginData?.data?.token
+
     const campaignGetloading = store?.getCampaignReducer?.loading
     const [modalShow, setModalShow] = useState(false);
     const [campaignData, setCampaignData] = useState('')
@@ -27,24 +31,6 @@ const PortFolio = () => {
         dispatch(campaignActions());
         dispatch(getHomeCampaignActions())
     }, [])
-    // const [array, setArray] = useState(['hello', 'hii', 'what your name'])
-    // const [arrayid, setArrayId] = useState([])
-
-    // const checkBox = (check, id) => {
-    //     if (check === true) {
-    //         setArrayId([...arrayid, id])
-    //     } else if (check === false) {
-    //         const findArrayId = arrayid?.filter((itss, indexs) => itss !== id)
-    //         setArrayId(findArrayId);
-    //     }
-    // }
-
-    // const deleteBtn = (id) => {
-    //     const deleteChekd = array?.filter((iitems, iiitd) => iiitd !== id)
-    //     setArray(deleteChekd)
-    //     setArrayId([])
-    // }
-
 
     return (
         <>
@@ -115,8 +101,7 @@ const PortFolio = () => {
 
                 {!campaignGetloading ? <div className="container">
                     <div class="row gy-4 portfolio-container">
-                        {campaignGetData?.map((item) => {
-                            console.log(item.source, 'map')
+                        {homeCampaignGetData?.map((item) => {
                             return (<>
                                 <div class="col-xl-4 col-md-6 portfolio-item filter-app">
                                     <div class="portfolio-wrap">

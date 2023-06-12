@@ -31,6 +31,7 @@ const compainSchema = new mongoose.Schema({
   donateAmount: {
     type: Number,
     required:false,
+    default: 0
   },
 });
 

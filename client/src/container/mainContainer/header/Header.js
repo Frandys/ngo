@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 // import { logOutAction } from '../../redux/action/loginAction/action';
 import "./Header.css"
-import { logOutAction } from '../../redux/loginNdSign/action';
+import { logOutAction } from '../../redux/auth/action';
 
 const Header = () => {
     const dispatch = useDispatch()
