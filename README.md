@@ -1,5 +1,5 @@
 # ngo
-NGO Client Run
+NGO Client Setup
 
 cd client
 
@@ -7,7 +7,12 @@ npm install
 
 npm start
 
-NGO Server Run
+//////////////////////////////
+
+NGO Server Setup
+
 cd server
+
 npm install
+
 npm start
