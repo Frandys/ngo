@@ -9,33 +9,38 @@ import About from './container/mainContainer/body/about/About';
 import LoginProtectRouters from './container/navBar/LoginProtectRouters';
 import PortFolio from './container/mainContainer/body/portfolio/portFolioPage/PortFolio';
 import { setAuthorization } from './container/helps/apiCore';
+import CampaignList from './container/mainContainer/body/campaignList/CampaignList';
 
 function App() {
   const state = useSelector((state) => state)
   const login = state?.loginReducer?.loginData?.data?.token
   const logOutRes = state?.loginReducer?.logOut
   const [accessToken, setAccessToken] = useState('')
+  console.log(accessToken, 'kk99')
   useEffect(() => {
     if (login !== "") {
       setAccessToken(localStorage.getItem("token"));
       setAuthorization(localStorage.getItem("token"))
-
     } else {
       setAccessToken(localStorage.getItem("token"));
     }
     if (logOutRes === true) {
       setAccessToken(localStorage.getItem("token"));
-
     }
   }, [login, logOutRes, accessToken])
+
+
 
   return (
     <>
       <Router >
         <Routes>
-          {/* <Routes path="/" element={}></Routes> */}
-          <Route path="/" element={<LoginProtectRouters isLoggedIn={accessToken} >
-            <PortFolio />
+          <Route path="/" element={accessToken !== null ? <>{<LoginProtectRouters isLoggedIn={accessToken} >
+            <IndexLogin />
+          </LoginProtectRouters>}</> : <><PortFolio /></>}
+          ></Route>
+          <Route path="/login" element={<LoginProtectRouters isLoggedIn={accessToken} >
+            <IndexLogin />
           </LoginProtectRouters>
           }>
           </Route>
@@ -45,8 +50,8 @@ function App() {
           <Route path="/portfolio" element={<Protected isLoggedIn={accessToken}>
             <PortFolio />
           </Protected>} />
-          <Route path="/home" element={<Protected isLoggedIn={accessToken}>
-            <Home />
+          <Route path="/campaign" element={<Protected isLoggedIn={accessToken}>
+            <CampaignList />
           </Protected>} />
         </Routes>
       </Router>

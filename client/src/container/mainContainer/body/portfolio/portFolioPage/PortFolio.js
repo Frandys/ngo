@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../../../header/Header'
-import { Card, Button } from 'react-bootstrap';
 import "../../../header/Header.css"
-import FirstImage from "../../../../helps/imageStatic/firstImage.jpg"
-import { campaignActions } from '../../../../redux/campaign/action';
 import { useSelector, useDispatch } from 'react-redux';
 import { TableLorder } from '../../../../helps/mainLorder/Lorder';
 import CampaignForm from './model/CampaignForm';
@@ -14,7 +11,6 @@ import { getHomeCampaignActions } from '../../../../redux/home/action';
 const PortFolio = () => {
     const store = useSelector((state) => state);
     const dispatch = useDispatch()
-    const campaignGetData = store?.getCampaignReducer?.getCampaignData?.data?.data?.data
     const homeCampaignGetData = store?.getHomeCampaignReducer?.getHomeCampaignData?.data?.data?.data
     // const login = state?.loginReducer?.loginData?.data?.token
 
@@ -28,7 +24,6 @@ const PortFolio = () => {
     }
 
     useEffect(() => {
-        dispatch(campaignActions());
         dispatch(getHomeCampaignActions())
     }, [])
 

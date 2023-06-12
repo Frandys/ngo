@@ -6,7 +6,7 @@ const LoginProtectRouters = ({ isLoggedIn, children }) => {
     if (!isLoggedIn) {
         return children
     } else {
-        return <Navigate to="/portfolio" replace />;
+        return <Navigate to="/campaign" replace />;
     }
 }
 

@@ -27,3 +27,30 @@ export const campaignActions = () => async (dispatch) => {
         })
     }
 }
+
+export const addCampaignActions = (data) => async (dispatch) => {
+    dispatch({
+        type: actionType.ADD_CAMPAIGN_LOADING,
+        payload: {}
+    })
+    try {
+
+        console.log(api);
+        api.create(`api/v1/campaign`, data).then((success) => {
+            dispatch({
+                type: actionType.ADD_CAMPAIGN_SUCCESS,
+                payload: success
+            })
+        }).catch((error) => {
+            dispatch({
+                type: actionType.ADD_CAMPAIGN_ERROR,
+                payload: error
+            })
+        });
+    } catch (error) {
+        dispatch({
+            type: actionType.ADD_CAMPAIGN_ERROR,
+            payload: error
+        })
+    }
+}

@@ -15,7 +15,6 @@ const SignUp = (props) => {
 
   const signUpLoading = store?.signUpReducer?.loading;
 
-  console.log(store?.signUpReducer?.signUpData?.data?.status, "sinpttt");
   const { loginSignBtn } = props;
   const {
     register,
@@ -178,13 +177,13 @@ const SignUp = (props) => {
                           Role
                         </label>
                         <select
-                         class="form-control"
-                       {...register("role", { required: true })}
+                          class="form-control"
+                          {...register("role", { required: true })}
                         >
-                           <option value="ngo">NGO</option>
+                          <option value="ngo">NGO</option>
                           <option value="user">User</option>
                         </select>
-                       
+
                         {errors.role && (
                           <span className="text-danger ">
                             Please enter Role
