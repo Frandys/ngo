@@ -92,6 +92,7 @@ exports.getOne = (Model, popOptions) => {
 
 exports.getAllByUser = (Model) => {
     return catchAsync(async (req, res, next) => {
+        console.log(req);
        let userId = req.user._id;
         // To allow for nested GET reviews on tour (hack)
         let filter = {user:userId};

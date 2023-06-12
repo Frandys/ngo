@@ -1,13 +1,22 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { Modal, Button } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import { addCampaignActions } from '../../../../redux/campaign/action';
+import { addCampaignActions, campaignActions } from '../../../../redux/campaign/action';
 import { useDispatch, useSelector } from 'react-redux';
+import ToastifyMain from '../../../../toastify/ToastifyMain';
+import * as actionType from "../../../../redux/campaign/constant"
+import { ButtonLorder } from '../../../../helpers/mainLorder/Lorder';
+// import { ButtonLorder } from '../../../../helps/mainLorder/Lorder';
+
 
 const CampaignForm = (props) => {
+    const { onHide } = props
     const store = useSelector((state) => state);
     const dispatch = useDispatch()
+    const addCampaignStatus = store?.addCampaignReducer?.addCampaignData?.data?.status;
+    const addCampaignMessage = store?.addCampaignReducer?.addCampaignData?.data?.message;
+    const campaignLoading = store?.addCampaignReducer?.loading
+
     const {
         register,
         handleSubmit,
@@ -15,6 +24,7 @@ const CampaignForm = (props) => {
         formState: { errors },
     } = useForm();
 
+    console.log(store, addCampaignStatus,addCampaignMessage,'******')
     const [typesInput, setTypesInput] = useState(false)
     const typesInputBtn = (types) => {
         if (types === "image") {
@@ -37,6 +47,18 @@ const CampaignForm = (props) => {
         dispatch(addCampaignActions(formData));
     };
 
+    useEffect(() => {
+        if (addCampaignStatus === "success") {
+            ToastifyMain(addCampaignMessage);
+            onHide()
+            dispatch(campaignActions());
+            dispatch({
+                type: actionType.ADD_CAMPAIGN_RESET,
+                payload: {}
+            })
+
+        }
+    }, [addCampaignStatus]);
     return (
         <div><Modal
             {...props}
@@ -179,8 +201,8 @@ const CampaignForm = (props) => {
                                 <div className="row">
                                     <div className="col-12">
                                         <button type="submit" class="btn btn-primary w-100">
-                                            Save
-                                            {/* {!signUpLoading ? <>Sign Up</> : <Loading />} */}
+
+                                            {!campaignLoading ? <>Save</> : <ButtonLorder />}
                                         </button>
                                     </div>
                                 </div>

@@ -5,6 +5,13 @@ const CAMPAIGN_GET_INITIAL_STATE = {
     loading: false
 }
 
+const CAMPAIGN_ADD_INITIAL_STATE = {
+    addCampaignData: [],
+    loading: false
+}
+
+
+
 const getCampaignReducer = (state = CAMPAIGN_GET_INITIAL_STATE, action) => {
     switch (action.type) {
         case actionType.CAMPAIGN_LOADING:
@@ -26,4 +33,28 @@ const getCampaignReducer = (state = CAMPAIGN_GET_INITIAL_STATE, action) => {
     }
 }
 
-export { getCampaignReducer }
+const addCampaignReducer = (state = CAMPAIGN_ADD_INITIAL_STATE, action) => {
+    switch (action.type) {
+        case actionType.ADD_CAMPAIGN_LOADING:
+            return {
+                addCampaignData: state.addCampaignData,
+                loading: true
+            }
+        case actionType.ADD_CAMPAIGN_SUCCESS:
+            return {
+                addCampaignData: action.payload,
+                loading: false
+            }
+        case actionType.ADD_CAMPAIGN_ERROR:
+            return {
+                addCampaignData: action.payload,
+                loading: false
+            }
+        case actionType.ADD_CAMPAIGN_RESET:
+            return CAMPAIGN_GET_INITIAL_STATE
+        default: return state
+    }
+}
+
+
+export { getCampaignReducer, addCampaignReducer }

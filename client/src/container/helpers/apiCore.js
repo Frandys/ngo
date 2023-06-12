@@ -121,6 +121,17 @@ class APICore {
     };
 
     /**
+ * post given data to url
+ */
+    createWithImage = (url, formData) => {
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data',
+            },
+        };
+        return axios.post(url, formData, config);
+    };
+    /**
      * Updates patch data
      */
     updatePatch = (url, data) => {

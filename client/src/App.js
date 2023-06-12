@@ -8,6 +8,7 @@ import PublicRouters from './container/navBar/Public';
 import { setAuthorization } from './container/helpers/apiCore';
 import CampaignList from './container/mainContainer/pages/campaignList/CampaignList';
 import HomePage from './container/mainContainer/pages/home/homePage/homePage';
+import VerifyEmail from './container/mainContainer/pages/verifyEmail/Verify';
 
 function App() {
   const state = useSelector((state) => state)
@@ -32,7 +33,12 @@ function App() {
     <>
       <Router >
         <Routes>
-          <Route path="/" element={accessToken !== null ? <>{<PublicRouters isLoggedIn={accessToken} >
+        <Route path="/verify-email/:tokens" element={<PublicRouters>
+            <VerifyEmail />
+          </PublicRouters>
+          }>
+          </Route>
+          <Route path="/" element={accessToken !== null ? <>{<PublicRouters   >
             <IndexLogin />
           </PublicRouters>}</> : <><HomePage /></>}
           ></Route>
